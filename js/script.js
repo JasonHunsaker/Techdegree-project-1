@@ -11,52 +11,55 @@ project 1 - A Random Quote Generator
  * array of quotes to display
 ***/
 let quotes = [{
-  quote: "You miss 100% of the shots you dont take - Wayne Gretzkey",
-  source: "- Michael Scott: The Office",
+  quote: `"You miss 100% of the shots you dont take - Wayne Gretzkey"`,
+  source: "Michael Scott: The Office",
 },
 {
-  quote: "The bee stings the bird & the bee's life is over",
-  source: "- Gary Hunsaker",
+  quote: `"The bee stings the bird & the bee's life is over"`,
+  source: "Gary Hunsaker",
 },
 {
-  quote: "I Know",
-  source: "-Han Solo, Star Wars: A New Hope",
+  quote: `"I Know"`,
+  source: "Han Solo, Star Wars: A New Hope",
 },
 {
-  quote: "Aim low, reach your goals, and avoid disappointment.",
-  source: "-Scott Adams",
+  quote: `"Aim low, reach your goals, and avoid disappointment."`,
+  source: "Scott Adams",
 },
 {
-  quote: "If it’s your job to eat a frog, it’s best to do it first thing in the morning. And If it’s your job to eat two frogs, it’s best to eat the biggest one first.",
-  source: "- Mark Twain",
+  quote: `"If it’s your job to eat a frog, it’s best to do it first thing in the morning. And If it’s your job to eat two frogs, it’s best to eat the biggest one first."`,
+  source: "Mark Twain",
 },
 {
-  quote: "I reject your reality and substitute my own",
-  source: "- Adam Savage"
+  quote: `"I reject your reality and substitute my own"`,
+  source: "Adam Savage"
 }];
 
 /***
- * `getRandomQuote` function
+ * `getRandomQuote` function - needed to create a random number, assign that number to a variable, which would then be used to pull from the quotes array at random
 ***/
 function getRandomQuote (array) {
-  // random number to pick quote to display
   var whichQuote = Math.floor(Math.random() * (quotes.length));
   for (let i = 0; i < array.length; i++ ){
     var randomQuote = array[whichQuote];
   }
   return randomQuote;
 } 
-
+// used to check & ensure the getrandomquote array is working properly
+console.log(getRandomQuote(quotes))
 
 
 /***
- * `printQuote` function
+ * `printQuote` function - Takes the randomly selected quote from the getrandomquote function & formats it to display on webpage
 ***/
-function printQuote(){
+function printQuote() {
+  var input = "";
   var quotePrint = getRandomQuote(quotes);
-  var input = `<p calss='quote'>${quotePrint.quote}</p><h1 class='source'>${quotePrint.source}</h1>`;
-  document.querySelector("quote-box").innerhtml = input;
+  input = '<p calss="quote">' + quotePrint.quote + '</p>';
+  input += '<p class="source">' + quotePrint.source + '</p>';
+  document.getElementById('quote-box').innerHTML = input;
 }
+printQuote();
 
 
 /***
