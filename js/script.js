@@ -51,7 +51,7 @@ function getRandomQuote (array) {
   return randomQuote;
 } 
 // used to check & ensure the getrandomquote array is working properly
-console.log(getRandomQuote(quotes))
+//console.log(getRandomQuote(quotes))
 
 //code to return random background color - found at https://css-tricks.com/snippets/javascript/random-hex-color/
 
@@ -61,6 +61,7 @@ const setBg = () => {
 }
 
 // code to have printQuote called every 10 seconds
+
 setInterval(function() {
   printQuote();
 }, 10000)
@@ -92,4 +93,4 @@ printQuote(); //used to ensure the page loads a random quote without having to c
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false, setBg());
+document.getElementById('load-quote').addEventListener("click", printQuote, false,);
