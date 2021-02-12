@@ -51,9 +51,7 @@ let quotes = [{
 ***/
 function getRandomQuote (array) {
   var whichQuote = Math.floor(Math.random() * (quotes.length));
-  for (let i = 0; i < array.length; i++ ){
-    var randomQuote = array[whichQuote];
-  }
+  var randomQuote = array[whichQuote];
   return randomQuote;
 } 
 // used to check & ensure the getrandomquote array is working properly
