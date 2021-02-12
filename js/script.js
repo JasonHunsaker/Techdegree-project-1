@@ -13,31 +13,37 @@ project 1 - A Random Quote Generator
 let quotes = [{
   quote: `"You miss 100% of the shots you dont take - Wayne Gretzkey"`,
   source: "Michael Scott",
-  citation: "The Office"
+  citation: "The Office",
+  tag: "TV",
 },
 {
   quote: `"The bee stings the bird & the bee's life is over"`,
   source: "Gary Hunsaker",
   year: 2002,
+  tag: "Advice from father",
 },
 {
   quote: `"I Know"`,
   source: "Han Solo",
   citation: "Star Wars: A New Hope",
   year: 1977,
+  tag: "Movie",
 },
 {
   quote: `"Aim low, reach your goals, and avoid disappointment."`,
   source: "Scott Adams",
+  tag: "Words to live by",
 },
 {
   quote: `"It is better to keep your mouth closed and let people think you are a fool than to open it and remove all doubt."`,
   source: "Mark Twain",
+  tag: "Words to live by",
 },
 {
   quote: `"I reject your reality and substitute my own"`,
   source: "Adam Savage",
   citation: "MythBusters",
+  tag: "TV",
 }];
 
 /***
@@ -60,12 +66,6 @@ const setBg = () => {
   document.body.style.backgroundColor = "#" + randomColor;
 }
 
-// code to have printQuote called every 10 seconds
-
-setInterval(function() {
-  printQuote();
-}, 10000)
-
 /***
  * `printQuote` function - Takes the randomly selected quote from the getrandomquote function & formats it to display on webpage 
  * if statements included to show potential citation & year if they are inluded in array information
@@ -82,10 +82,19 @@ function printQuote() {
   if (quotePrint.year){
     input += '<span class="year">' + quotePrint.year + '</span>' ;
   }
+  if (quotePrint.tag){
+    input += '<span class="tag">' + quotePrint.tag + '</span>';
+  }
  '</p>'    
   document.getElementById('quote-box').innerHTML = input;
 }
 printQuote(); //used to ensure the page loads a random quote without having to click the button first
+
+// code to have printQuote called every 10 seconds
+
+setInterval(function() {
+  printQuote();
+}, 10000)
 
 
 /***
