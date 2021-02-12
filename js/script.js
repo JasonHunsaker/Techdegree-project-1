@@ -12,27 +12,32 @@ project 1 - A Random Quote Generator
 ***/
 let quotes = [{
   quote: `"You miss 100% of the shots you dont take - Wayne Gretzkey"`,
-  source: "Michael Scott: The Office",
+  source: "Michael Scott",
+  citation: "The Office"
 },
 {
   quote: `"The bee stings the bird & the bee's life is over"`,
   source: "Gary Hunsaker",
+  year: 2002,
 },
 {
   quote: `"I Know"`,
-  source: "Han Solo, Star Wars: A New Hope",
+  source: "Han Solo",
+  citation: "Star Wars: A New Hope",
+  year: 1977,
 },
 {
   quote: `"Aim low, reach your goals, and avoid disappointment."`,
   source: "Scott Adams",
 },
 {
-  quote: `"If it’s your job to eat a frog, it’s best to do it first thing in the morning. And If it’s your job to eat two frogs, it’s best to eat the biggest one first."`,
+  quote: `"It is better to keep your mouth closed and let people think you are a fool than to open it and remove all doubt."`,
   source: "Mark Twain",
 },
 {
   quote: `"I reject your reality and substitute my own"`,
-  source: "Adam Savage"
+  source: "Adam Savage",
+  citation: "MythBusters",
 }];
 
 /***
@@ -48,18 +53,38 @@ function getRandomQuote (array) {
 // used to check & ensure the getrandomquote array is working properly
 console.log(getRandomQuote(quotes))
 
+//code to return random background color - found at https://css-tricks.com/snippets/javascript/random-hex-color/
+
+const setBg = () => {
+  const randomColor = Math.floor(Math.random()*16777215).toString(16);
+  document.body.style.backgroundColor = "#" + randomColor;
+}
+
+// code to have printQuote called every 10 seconds
+setInterval(function() {
+  printQuote();
+}, 10000)
 
 /***
- * `printQuote` function - Takes the randomly selected quote from the getrandomquote function & formats it to display on webpage
+ * `printQuote` function - Takes the randomly selected quote from the getrandomquote function & formats it to display on webpage 
+ * if statements included to show potential citation & year if they are inluded in array information
 ***/
 function printQuote() {
+  setBg()
   var input = "";
   var quotePrint = getRandomQuote(quotes);
   input = '<p calss="quote">' + quotePrint.quote + '</p>';
-  input += '<p class="source">' + quotePrint.source + '</p>';
+  input += '<p class="source">' + quotePrint.source ;
+  if (quotePrint.citation) {
+    input += '<span class="citation">' + quotePrint.citation + '</span>' ;
+  }
+  if (quotePrint.year){
+    input += '<span class="year">' + quotePrint.year + '</span>' ;
+  }
+ '</p>'    
   document.getElementById('quote-box').innerHTML = input;
 }
-printQuote();
+printQuote(); //used to ensure the page loads a random quote without having to click the button first
 
 
 /***
@@ -67,4 +92,4 @@ printQuote();
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false, setBg());
