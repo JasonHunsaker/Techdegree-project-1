@@ -92,7 +92,7 @@ printQuote(); //used to ensure the page loads a random quote without having to c
 
 setInterval(function() {
   printQuote();
-}, 10000)
+}, 20000)
 
 
 /***
